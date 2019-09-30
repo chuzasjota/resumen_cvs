@@ -12,7 +12,7 @@
 </template>
 <script>
 import {SchemaForm} from 'vue-json-schema-form'
-import schema from '../schemas/schema.json'
+import schema from '../schemas/basics.json'
 
 export default {
   name: "Form",
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     submit() {
-      console.log(JSON.stringify(this.formData, null, 2))
+      alert(JSON.stringify(this.formData, null, 2))
       // do things with the validated submission (this.formData)
     }
   }
