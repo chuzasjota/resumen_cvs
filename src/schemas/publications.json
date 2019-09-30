@@ -1,0 +1,37 @@
+"publications": {
+      "type": "array",
+      "title": "Publications",
+      "description": "Specify your publications through your career",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "e.g. The World Wide Web"
+          },
+          "publisher": {
+            "type": "string",
+            "title": "Publisher",
+            "description": "e.g. IEEE, Computer Magazine"
+          },
+          "releaseDate": {
+            "type": "string",
+            "title": "Release Date",
+            "description": "e.g. 1990-08-01"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "e.g. http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html"
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary",
+            "description": "Short summary of publication. e.g. Discussion of the World Wide Web, HTTP, HTML."
+          }
+        }
+      }
+    }
