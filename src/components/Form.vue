@@ -1,35 +1,56 @@
 <template>
-  <section class="section">
-    <h1>Resume Schem Form</h1>
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <schema-form :schema="schema" v-model="formData" @submit="submit()" />
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="container">
+    <section>
+      <b-steps
+        v-model="activeStep"
+        :animated="isAnimated"
+        :has-navigation="hasNavigation"
+      >
+        <b-step-item label="Basics" :clickable="isStepsClickable">
+          <Basics />
+        </b-step-item>
+        <b-step-item label="Work">
+          <Work />
+        </b-step-item>
+        <b-step-item label="Education" :clickable="isStepsClickable">
+          <Education />
+        </b-step-item>
+        <b-step-item label="Skills" :clickable="isStepsClickable">
+          <Skills />
+        </b-step-item>
+        <b-step-item label="Social" :clickable="isStepsClickable">
+          <Social />
+        </b-step-item>
+        <b-step-item label="Languages" :clickable="isStepsClickable">
+          <Languages />
+        </b-step-item>
+        <b-step-item label="Finish" :clickable="isStepsClickable" disabled>
+          <h1 class="title has-text-centered">Finish</h1>
+          Lorem ipsum dolor sit amet.
+        </b-step-item>
+      </b-steps>
+    </section>
+  </div>
 </template>
+
 <script>
-import {SchemaForm} from 'vue-json-schema-form'
-import schema from '../schemas/basics.json'
+import Basics from "./Basics.vue";
+import Work from "./Work.vue";
+import Education from "./Education.vue";
+import Skills from "./Skills.vue";
+import Social from "./Social.vue";
+import Languages from "./Languages.vue";
 
 export default {
   name: "Form",
-  components: {
-    SchemaForm
-  },
+  components: { Basics, Work, Education, Skills, Social, Languages },
   data() {
     return {
-      schema: schema,
-      formData: {}
+      activeStep: 0,
+      isAnimated: true,
+      hasNavigation: true,
+      isStepsClickable: false
     };
-  },
-  methods: {
-    submit() {
-      alert(JSON.stringify(this.formData, null, 2))
-      // do things with the validated submission (this.formData)
-    }
   }
-}
+};
 </script>
