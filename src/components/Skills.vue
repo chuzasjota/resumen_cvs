@@ -2,7 +2,11 @@
   <div>
     <h1 class="title has-text-centered">Skills</h1>
     <div class="columns is-multiline is-mobile box">
-      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+      <div
+        v-for="(skill, index) in formData.skills"
+        v-bind:key="index"
+        class="column is-12-mobile is-6-tablet is-6-desktop"
+      >
         <b-collapse class="card" aria-id="contentIdForA11y3">
           <div
             slot="trigger"
@@ -12,7 +16,7 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ SkillTitle }}
+              {{ skill.skillTitle }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -28,13 +32,19 @@
                   class="column is-12-mobile is-two-fifths-tablet is-two-fifths-desktop"
                 >
                   <b-field label="Skill">
-                    <b-input placeholder="Javascript" v-model="SkillTitle">
+                    <b-input
+                      v-model="skill.skillTitle"
+                      name="skillTitle"
+                      placeholder="Javascript"
+                    >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile">
                   <b-field label="Level">
                     <b-slider
+                      v-model="skill.level"
+                      name="level"
                       :min="0"
                       :max="4"
                       aria-label="Level"
@@ -50,12 +60,23 @@
                 </div>
               </div>
             </div>
+            <div class="column is-12-mobile is-12-tablet is-12-desktop">
+              <b-button
+                @click="deleteSkill(index)"
+                type="is-danger"
+                icon-left="fas fa-trash"
+              >
+                Delete
+              </b-button>
+            </div>
           </div>
         </b-collapse>
       </div>
-      <div class="column is-12-mobile is-12-tablet is-12-desktop">
-        <b-button type="is-danger" icon-left="fas fa-plus">
-          Add new
+      <div
+        class="column is-12-mobile is-12-tablet is-12-desktop has-text-centered"
+      >
+        <b-button @click="addSkill" type="is-info" icon-left="fas fa-plus">
+          Add new skill
         </b-button>
       </div>
     </div>
@@ -64,6 +85,20 @@
 
 <script>
 export default {
-  name: "Skills"
+  name: "Skills",
+  props: {
+    formData: {}
+  },
+  methods: {
+    addSkill: function() {
+      this.formData.skills.push({
+        skillTitle: "",
+        level: ""
+      });
+    },
+    deleteSkill: function(index) {
+      this.formData.skills.splice(index, 1);
+    }
+  }
 };
 </script>
