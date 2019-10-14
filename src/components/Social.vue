@@ -2,7 +2,11 @@
   <div>
     <h1 class="title has-text-centered">Social Links</h1>
     <div class="columns is-multiline is-mobile box">
-      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+      <div
+        v-for="(social, index) in formData.socials"
+        v-bind:key="index"
+        class="column is-12-mobile is-6-tablet is-6-desktop"
+      >
         <b-collapse class="card" aria-id="contentIdForA11y3">
           <div
             slot="trigger"
@@ -12,7 +16,7 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ SocialTitle }}
+              {{ social.socialTitle }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -26,23 +30,43 @@
               <div class="columns is-multiline is-mobile">
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
                   <b-field label="Name">
-                    <b-input placeholder="Twitter" v-model="SocialTitle">
+                    <b-input
+                      v-model="social.socialTitle"
+                      name="socialTitle"
+                      placeholder="Twitter"
+                    >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
                   <b-field label="Link">
-                    <b-input placeholder="www.twitter.com"></b-input>
+                    <b-input
+                      v-model="social.link"
+                      name="link"
+                      placeholder="www.twitter.com"
+                    >
+                    </b-input>
                   </b-field>
                 </div>
               </div>
             </div>
+            <div class="column is-12-mobile is-12-tablet is-12-desktop">
+              <b-button
+                @click="deleteSocial(index)"
+                type="is-danger"
+                icon-left="fas fa-trash"
+              >
+                Delete
+              </b-button>
+            </div>
           </div>
         </b-collapse>
       </div>
-      <div class="column is-12-mobile is-12-tablet is-12-desktop">
-        <b-button type="is-danger" icon-left="fas fa-plus">
-          Add new
+      <div
+        class="column is-12-mobile is-12-tablet is-12-desktop has-text-centered"
+      >
+        <b-button @click="addSocial" type="is-info" icon-left="fas fa-plus">
+          Add new social
         </b-button>
       </div>
     </div>
@@ -51,6 +75,20 @@
 
 <script>
 export default {
-  name: "Social"
+  name: "Social",
+  props: {
+    formData: {}
+  },
+  methods: {
+    addSocial: function() {
+      this.formData.socials.push({
+        socialTitle: "",
+        link: ""
+      });
+    },
+    deleteSocial: function(index) {
+      this.formData.socials.splice(index, 1);
+    }
+  }
 };
 </script>
