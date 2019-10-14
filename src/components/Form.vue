@@ -1,35 +1,36 @@
 <template>
   <div class="container">
     <section>
-      <b-steps
-        v-model="activeStep"
-        :animated="isAnimated"
-        :has-navigation="hasNavigation"
-      >
-        <b-step-item label="Basics" :clickable="isStepsClickable">
-          <Basics />
-        </b-step-item>
-        <b-step-item label="Work">
-          <Work />
-        </b-step-item>
-        <b-step-item label="Education" :clickable="isStepsClickable">
-          <Education />
-        </b-step-item>
-        <b-step-item label="Skills" :clickable="isStepsClickable">
-          <Skills />
-        </b-step-item>
-        <b-step-item label="Social" :clickable="isStepsClickable">
-          <Social />
-        </b-step-item>
-        <b-step-item label="Languages" :clickable="isStepsClickable">
-          <Languages />
-        </b-step-item>
-        <b-step-item label="Finish" :clickable="isStepsClickable" disabled>
-          <h1 class="title has-text-centered">Finish</h1>
-          Lorem ipsum dolor sit amet.
-        </b-step-item>
-      </b-steps>
+      <form>
+        <b-steps
+          v-model="activeStep"
+          :animated="isAnimated"
+          :has-navigation="hasNavigation"
+        >
+          <b-step-item label="Basics" :clickable="isStepsClickable">
+            <Basics :formData="formData" />
+          </b-step-item>
+          <b-step-item label="Work">
+            <Work :formData="formData" />
+          </b-step-item>
+          <b-step-item label="Education" :clickable="isStepsClickable">
+            <Education :formData="formData" />
+          </b-step-item>
+          <b-step-item label="Skills" :clickable="isStepsClickable">
+            <Skills :formData="formData" />
+          </b-step-item>
+          <b-step-item label="Social" :clickable="isStepsClickable">
+            <Social :formData="formData" />
+          </b-step-item>
+          <b-step-item label="Languages" :clickable="isStepsClickable">
+            <Languages :formData="formData" />
+          </b-step-item>
+        </b-steps>
+      </form>
     </section>
+    <div>
+      {{ formData }}
+    </div>
   </div>
 </template>
 
@@ -49,7 +50,17 @@ export default {
       activeStep: 0,
       isAnimated: true,
       hasNavigation: true,
-      isStepsClickable: false
+      isStepsClickable: false,
+      formData: {
+        basics: {
+          location: {}
+        },
+        works: [],
+        educations: [],
+        skills: [],
+        socials: [],
+        languages: []
+      }
     };
   }
 };
