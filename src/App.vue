@@ -1,16 +1,32 @@
 <template>
   <div id="app">
-    <Form />
+    <section class="section">
+      <div class="container has-text-centered">
+        <img alt="Multiplica logo" src="./assets/logo.svg" class="logo" />
+      </div>
+    </section>
+    <section>
+      <router-view></router-view>
+    </section>
+    <footer class="section">
+      <div class="container has-text-centered">
+        <p>
+          Footer CV multiplica
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import Form from "./components/Form.vue";
-
 export default {
-  name: "app",
-  components: {
-    Form
-  }
+  name: "app"
 };
 </script>
+
+<style scoped>
+.logo {
+  height: 30%;
+  width: 40%;
+}
+</style>
