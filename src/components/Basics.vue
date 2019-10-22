@@ -37,7 +37,7 @@
           <b-upload v-model="formData.basics.picture" name="picture">
             <a class="button is-primary">
               <b-icon icon="upload"></b-icon>
-              <span>Click to upload Image</span>
+              <span>Click to upload</span>
             </a>
           </b-upload>
           <span class="file-name" v-if="formData.basics.picture">

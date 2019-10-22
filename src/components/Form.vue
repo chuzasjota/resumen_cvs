@@ -1,33 +1,43 @@
 <template>
   <div class="container">
-    <section>
-      <form>
-        <b-steps
-          v-model="activeStep"
-          :animated="isAnimated"
-          :has-navigation="hasNavigation"
-        >
-          <b-step-item label="Basics" :clickable="isStepsClickable">
-            <Basics :formData="formData" />
-          </b-step-item>
-          <b-step-item label="Work">
-            <Work :formData="formData" />
-          </b-step-item>
-          <b-step-item label="Education" :clickable="isStepsClickable">
-            <Education :formData="formData" />
-          </b-step-item>
-          <b-step-item label="Skills" :clickable="isStepsClickable">
-            <Skills :formData="formData" />
-          </b-step-item>
-          <b-step-item label="Social" :clickable="isStepsClickable">
-            <Social :formData="formData" />
-          </b-step-item>
-          <b-step-item label="Languages" :clickable="isStepsClickable">
-            <Languages :formData="formData" />
-          </b-step-item>
-        </b-steps>
-      </form>
-    </section>
+    <div class="columns is-multiline is-mobile">
+      <section class="column is-12-mobile is-6-tablet is-6-desktop">
+        <form>
+          <b-steps
+            v-model="activeStep"
+            :animated="isAnimated"
+            :has-navigation="hasNavigation"
+          >
+            <b-step-item label="Basics" icon="fas fa-user">
+              <Basics :formData="formData" />
+            </b-step-item>
+            <b-step-item label="Work" icon="fas fa-briefcase">
+              <Work :formData="formData" />
+            </b-step-item>
+            <b-step-item label="Education" icon="fas fa-book">
+              <Education :formData="formData" />
+            </b-step-item>
+            <b-step-item label="Skills" icon="fas fa-toolbox">
+              <Skills :formData="formData" />
+            </b-step-item>
+            <b-step-item label="Social" icon="fas fa-users">
+              <Social :formData="formData" />
+            </b-step-item>
+            <b-step-item label="Languages" icon="fas fa-language">
+              <Languages :formData="formData" />
+            </b-step-item>
+          </b-steps>
+        </form>
+      </section>
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <div class="page" :id="$route.params.resumeid">
+          <div class="page-inner">
+            <component :is="$route.params.resumeid" :formData="formData">
+            </component>
+          </div>
+        </div>
+      </div>
+    </div>
     <div>
       {{ formData }}
     </div>
@@ -42,9 +52,21 @@ import Skills from "./Skills.vue";
 import Social from "./Social.vue";
 import Languages from "./Languages.vue";
 
+import Cool from "../resumes/cool.vue";
+import Creative from "../resumes/creative.vue";
+
 export default {
   name: "Form",
-  components: { Basics, Work, Education, Skills, Social, Languages },
+  components: {
+    Basics,
+    Work,
+    Education,
+    Skills,
+    Social,
+    Languages,
+    Cool,
+    Creative
+  },
   data() {
     return {
       activeStep: 0,
