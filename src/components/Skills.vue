@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 class="title has-text-centered">Skills</h1>
     <div class="columns is-multiline is-mobile box">
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Skills</h3>
+      </div>
       <div
         v-for="(skill, index) in formData.skills"
         v-bind:key="index"
@@ -16,7 +18,7 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ skill.skillTitle }}
+              {{ skill.skillTitle === "" ? "No title" : skill.skillTitle }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -28,20 +30,18 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline is-mobile">
-                <div
-                  class="column is-12-mobile is-two-fifths-tablet is-two-fifths-desktop"
-                >
-                  <b-field label="Skill">
+                <div class="column is-12-mobile is-full-tablet is-full-desktop">
+                  <b-field>
                     <b-input
                       v-model="skill.skillTitle"
                       name="skillTitle"
-                      placeholder="Javascript"
+                      placeholder="Skill"
                     >
                     </b-input>
                   </b-field>
                 </div>
-                <div class="column is-12-mobile">
-                  <b-field label="Level">
+                <div class="column is-12-mobile is-full-tablet is-full-desktop">
+                  <b-field>
                     <b-slider
                       v-model="skill.level"
                       name="level"
@@ -93,7 +93,7 @@ export default {
     addSkill: function() {
       this.formData.skills.push({
         skillTitle: "",
-        level: ""
+        level: [0]
       });
     },
     deleteSkill: function(index) {

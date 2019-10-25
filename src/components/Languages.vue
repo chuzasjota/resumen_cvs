@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 class="title has-text-centered">Languages</h1>
     <div class="columns is-multiline is-mobile box">
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Languages</h3>
+      </div>
       <div
         v-for="(language, index) in formData.languages"
         v-bind:key="index"
@@ -16,7 +18,7 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ language.langTitle }}
+              {{ language.langTitle === "" ? "No title" : language.langTitle }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -29,22 +31,21 @@
             <div class="content">
               <div class="columns is-multiline is-mobile">
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Language">
+                  <b-field>
                     <b-input
                       v-model="language.langTitle"
                       name="langTitle"
-                      placeholder="English"
+                      placeholder="Language"
                     >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Level">
+                  <b-field>
                     <b-select
                       v-model="language.level"
                       name="langTitle"
                       placeholder="Select a level"
-                      expanded
                     >
                       <option value="native-speaker">Native speaker</option>
                       <option value="highly-proficient">

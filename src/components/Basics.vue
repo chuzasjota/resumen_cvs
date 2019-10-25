@@ -1,43 +1,45 @@
 <template>
   <div>
-    <h1 class="title has-text-centered">Personal Details</h1>
     <div class="columns is-multiline is-mobile box">
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Full Name">
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Personal Details</h3>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-input
             v-model="formData.basics.name"
             name="name"
-            placeholder="John Doe"
+            placeholder="Full name"
           >
           </b-input>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Email">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-input
             v-model="formData.basics.email"
             name="email"
-            placeholder="john@gmail.com"
+            placeholder="Email"
           >
           </b-input>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Job Title">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-input
             v-model="formData.basics.jobTitle"
             name="jobTitle"
-            placeholder="Developer"
+            placeholder="Job Title"
           >
           </b-input>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Image">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-upload v-model="formData.basics.picture" name="picture">
             <a class="button is-primary">
               <b-icon icon="upload"></b-icon>
-              <span>Click to upload</span>
+              <span>Click to upload image</span>
             </a>
           </b-upload>
           <span class="file-name" v-if="formData.basics.picture">
@@ -45,97 +47,97 @@
           </span>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Phone">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-input
             v-model="formData.basics.phone"
             name="phone"
-            placeholder="55 64 92 42"
+            placeholder="Phone"
           >
           </b-input>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Date of Birth">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-datepicker
             v-model="formData.basics.date"
             name="date"
-            placeholder="Click to select..."
+            placeholder="Birthday Date"
             icon="far fa-calendar-alt"
           >
           </b-datepicker>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Nationality">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-input
             v-model="formData.basics.nationality"
             name="nationality"
-            placeholder="Mexicana"
+            placeholder="Nationality"
           >
           </b-input>
         </b-field>
       </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="website">
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
           <b-input
             v-model="formData.basics.website"
             name="website"
-            placeholder="www.google.com"
+            placeholder="WebSite"
           >
           </b-input>
         </b-field>
       </div>
       <div class="column is-12-mobile is-12-tablet is-12-desktop">
-        <h3>Location</h3>
-      </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Country">
-          <b-input
-            v-model="formData.basics.location.country"
-            name="country"
-            placeholder="México"
-          >
-          </b-input>
-        </b-field>
-      </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="City">
-          <b-input
-            v-model="formData.basics.location.city"
-            name="city"
-            placeholder="CDMX"
-          >
-          </b-input>
-        </b-field>
-      </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Address">
-          <b-input
-            v-model="formData.basics.location.address"
-            name="address"
-            placeholder="Cll 4 prueba"
-          >
-          </b-input>
-        </b-field>
-      </div>
-      <div class="column is-12-mobile is-3-tablet is-3-desktop">
-        <b-field label="Postal Code">
-          <b-input
-            v-model="formData.basics.location.postalCode"
-            name="postalCode"
-            placeholder="024532"
-          >
-          </b-input>
-        </b-field>
-      </div>
-      <div class="column is-12-mobile is-12-tablet is-12-desktop">
-        <b-field label="Summary">
+        <b-field>
           <b-input
             v-model="formData.basics.summary"
             maxlength="200"
             type="textarea"
-            placeholder="Text"
+            placeholder="Summary"
+          >
+          </b-input>
+        </b-field>
+      </div>
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Location</h3>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
+          <b-input
+            v-model="formData.basics.location.country"
+            name="country"
+            placeholder="Country"
+          >
+          </b-input>
+        </b-field>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
+          <b-input
+            v-model="formData.basics.location.city"
+            name="city"
+            placeholder="City"
+          >
+          </b-input>
+        </b-field>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
+          <b-input
+            v-model="formData.basics.location.address"
+            name="address"
+            placeholder="Address"
+          >
+          </b-input>
+        </b-field>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-6-desktop">
+        <b-field>
+          <b-input
+            v-model="formData.basics.location.postalCode"
+            name="postalCode"
+            placeholder="Postal Code"
           >
           </b-input>
         </b-field>

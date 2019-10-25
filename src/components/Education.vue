@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 class="title has-text-centered">Education</h1>
     <div class="columns is-multiline is-mobile box">
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Educations</h3>
+      </div>
       <div
         v-for="(education, index) in formData.educations"
         v-bind:key="index"
@@ -16,7 +18,11 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ education.educationTitle }}
+              {{
+                education.educationTitle === ""
+                  ? "No title"
+                  : education.educationTitle
+              }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -28,69 +34,66 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline is-mobile">
-                <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="School">
+                <div class="column is-12-mobile is-full-tablet is-full-desktop">
+                  <b-field>
                     <b-input
                       v-model="education.educationTitle"
                       name="educationTitlte"
-                      placeholder="Web Dev"
+                      placeholder="School"
                     >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Degree">
+                  <b-field>
                     <b-input
                       v-model="education.degree"
                       name="degree"
-                      placeholder="Multiplica"
+                      placeholder="Degree"
                     >
                     </b-input>
                   </b-field>
                 </div>
-                <div
-                  class="column is-12-mobile is-one-quarter-tablet is-one-quarter-desktop"
-                >
-                  <b-field label="Start Date">
+                <div class="column is-12-mobile is-half-tablet is-half-desktop">
+                  <b-field>
+                    <b-input
+                      v-model="education.city"
+                      name="city"
+                      placeholder="City"
+                    >
+                    </b-input>
+                  </b-field>
+                </div>
+                <div class="column is-12-mobile is-half-tablet is-half-desktop">
+                  <b-field>
                     <b-datepicker
                       v-model="education.startDate"
                       name="startDate"
-                      placeholder="Click to select..."
-                      icon="far fa-calendar-alt"
-                    >
-                    </b-datepicker>
-                  </b-field>
-                </div>
-                <div
-                  class="column is-12-mobile is-one-quarter-tablet is-one-quarter-desktop"
-                >
-                  <b-field label="End Date">
-                    <b-datepicker
-                      v-model="education.endDate"
-                      name="endDate"
-                      placeholder="Click to select..."
+                      placeholder="Start Date"
                       icon="far fa-calendar-alt"
                     >
                     </b-datepicker>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="City">
-                    <b-input
-                      v-model="education.city"
-                      name="city"
-                      placeholder="CDMX"
+                  <b-field>
+                    <b-datepicker
+                      v-model="education.endDate"
+                      name="endDate"
+                      placeholder="End Date"
+                      icon="far fa-calendar-alt"
                     >
-                    </b-input>
+                    </b-datepicker>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-12-tablet is-12-desktop">
-                  <b-field label="Description">
+                  <b-field>
                     <b-input
                       v-model="education.desc"
                       name="desc"
                       maxlength="200"
                       type="textarea"
+                      placeholder="Description"
                     >
                     </b-input>
                   </b-field>

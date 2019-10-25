@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 class="title has-text-centered">Works</h1>
     <div class="columns is-multiline is-mobile box">
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Works</h3>
+      </div>
       <div
         v-for="(work, index) in formData.works"
         v-bind:key="index"
@@ -16,7 +18,7 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ work.jobTitle }}
+              {{ work.jobTitle === "" ? "No title" : work.jobTitle }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -28,65 +30,62 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline is-mobile">
-                <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Job Title">
+                <div class="column is-12-mobile is-full-tablet is-full-desktop">
+                  <b-field>
                     <b-input
                       v-model="work.jobTitle"
                       name="jobTitle"
-                      placeholder="Web Dev"
+                      placeholder="Job Title"
                     >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Employer">
+                  <b-field>
                     <b-input
                       v-model="work.employer"
                       name="employer"
-                      placeholder="Multiplica"
+                      placeholder="Employer"
                     >
                     </b-input>
                   </b-field>
                 </div>
-                <div
-                  class="column is-12-mobile is-one-quarter-tablet is-one-quarter-desktop"
-                >
-                  <b-field label="Start Date">
+                <div class="column is-12-mobile is-half-tablet is-half-desktop">
+                  <b-field>
+                    <b-input v-model="work.city" name="city" placeholder="City">
+                    </b-input>
+                  </b-field>
+                </div>
+                <div class="column is-12-mobile is-half-tablet is-half-desktop">
+                  <b-field>
                     <b-datepicker
                       v-model="work.startDate"
                       name="startDate"
-                      placeholder="Click to select..."
-                      icon="far fa-calendar-alt"
-                    >
-                    </b-datepicker>
-                  </b-field>
-                </div>
-                <div
-                  class="column is-12-mobile is-one-quarter-tablet is-one-quarter-desktop"
-                >
-                  <b-field label="End Date">
-                    <b-datepicker
-                      v-model="work.endDate"
-                      name="endDate"
-                      placeholder="Click to select..."
+                      placeholder="Start Date"
                       icon="far fa-calendar-alt"
                     >
                     </b-datepicker>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="City">
-                    <b-input v-model="work.city" name="city" placeholder="CDMX">
-                    </b-input>
+                  <b-field>
+                    <b-datepicker
+                      v-model="work.endDate"
+                      name="endDate"
+                      placeholder="End Date"
+                      icon="far fa-calendar-alt"
+                    >
+                    </b-datepicker>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-12-tablet is-12-desktop">
-                  <b-field label="Description">
+                  <b-field>
                     <b-input
                       v-model="work.desc"
                       name="desc"
                       maxlength="200"
                       type="textarea"
+                      placeholder="Description"
                     >
                     </b-input>
                   </b-field>

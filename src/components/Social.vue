@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 class="title has-text-centered">Social Links</h1>
     <div class="columns is-multiline is-mobile box">
+      <div class="column is-12-mobile is-12-tablet is-12-desktop">
+        <h3 class="subtitle orange">Links</h3>
+      </div>
       <div
         v-for="(social, index) in formData.socials"
         v-bind:key="index"
@@ -16,7 +18,7 @@
             aria-controls="contentIdForA11y3"
           >
             <p class="card-header-title">
-              {{ social.socialTitle }}
+              {{ social.socialTitle === "" ? "No title" : social.socialTitle }}
             </p>
             <a class="card-header-icon">
               <b-icon
@@ -29,21 +31,21 @@
             <div class="content">
               <div class="columns is-multiline is-mobile">
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Name">
+                  <b-field>
                     <b-input
                       v-model="social.socialTitle"
                       name="socialTitle"
-                      placeholder="Twitter"
+                      placeholder="Name"
                     >
                     </b-input>
                   </b-field>
                 </div>
                 <div class="column is-12-mobile is-half-tablet is-half-desktop">
-                  <b-field label="Link">
+                  <b-field>
                     <b-input
                       v-model="social.link"
                       name="link"
-                      placeholder="www.twitter.com"
+                      placeholder="Link"
                     >
                     </b-input>
                   </b-field>
