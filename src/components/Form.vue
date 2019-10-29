@@ -104,44 +104,11 @@ export default {
         basics: {
           location: {}
         },
-        works: [
-          {
-            jobTitle: "",
-            employer: "",
-            startDate: [],
-            endDate: [],
-            city: "",
-            desc: ""
-          }
-        ],
-        educations: [
-          {
-            educationTitle: "",
-            degree: "",
-            startDate: [],
-            endDate: [],
-            city: "",
-            desc: ""
-          }
-        ],
-        skills: [
-          {
-            skillTitle: "",
-            level: ""
-          }
-        ],
-        socials: [
-          {
-            socialTitle: "",
-            link: [0]
-          }
-        ],
-        languages: [
-          {
-            langTitle: "",
-            level: ""
-          }
-        ]
+        works: [],
+        educations: [],
+        skills: [],
+        socials: [],
+        languages: []
       }
     };
   }
