@@ -27,32 +27,6 @@
             <b-step-item label="Languages" icon="fas fa-language">
               <Languages :formData="formData" />
             </b-step-item>
-            <template
-              v-if="customNavigation"
-              slot="navigation"
-              slot-scope="{ previous, next }"
-            >
-              <b-button
-                outlined
-                type="is-danger"
-                icon-pack="fas"
-                icon-left="backward"
-                :disabled="previous.disabled"
-                @click.prevent="previous.action"
-              >
-                Previous
-              </b-button>
-              <b-button
-                outlined
-                type="is-success"
-                icon-pack="fas"
-                icon-right="forward"
-                :disabled="next.disabled"
-                @click.prevent="next.action"
-              >
-                Next
-              </b-button>
-            </template>
           </b-steps>
         </form>
       </section>
@@ -99,7 +73,6 @@ export default {
       activeStep: 0,
       isAnimated: true,
       hasNavigation: true,
-      customNavigation: true,
       formData: {
         basics: {
           location: {}
