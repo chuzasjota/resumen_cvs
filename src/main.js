@@ -9,6 +9,8 @@ Vue.use(Buefy, {
   defaultIconPack: "fas"
 });
 
+Vue.use(require("vue-moment"));
+
 Vue.config.productionTip = false;
 
 new Vue({

@@ -109,7 +109,8 @@
                   >
                     <p class="card-header-title">
                       {{ work.jobTitle }} at {{ work.employer }} <br />
-                      {{ work.startDate }} - {{ work.endDate }}
+                      {{ $moment(work.startDate).format("MMMM - YYYY") }} -
+                      {{ $moment(work.endDate).format("MMMM - YYYY") }}
                     </p>
                     <a class="card-header-icon">
                       <b-icon
@@ -160,8 +161,7 @@ export default {
   data() {
     return {
       edit: false,
-      idWork: 0,
-      works: this.formData.works
+      idWork: 0
     };
   },
   methods: {
