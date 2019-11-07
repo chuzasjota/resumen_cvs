@@ -98,55 +98,41 @@
           </div>
           <div class="column is-12-mobile is-6-tablet is-6-desktop">
             <div v-for="(work, index) in formData.works" v-bind:key="index">
-              <section>
-                <b-collapse class="card" aria-id="contentIdForA11y3">
-                  <div
-                    slot="trigger"
-                    slot-scope="props"
-                    class="card-header"
-                    role="button"
-                    aria-controls="contentIdForA11y3"
+              <div class="card card-data columns is-mobile is-multiline">
+                <div class="column is-four-fifths">
+                  <p class="title is-4">{{ work.jobTitle }}</p>
+                </div>
+                <div class="column">
+                  <b-button
+                    @click="editWork(index)"
+                    icon-left="far fa-edit"
+                    size="is-small"
+                    class="buttons-action"
                   >
-                    <p class="card-header-title">
-                      {{ work.jobTitle }} at {{ work.employer }} <br />
-                      {{ $moment(work.startDate).format("MMMM - YYYY") }} -
-                      {{ $moment(work.endDate).format("MMMM - YYYY") }}
-                    </p>
-                    <a class="card-header-icon">
-                      <b-icon
-                        :icon="
-                          props.open ? 'fas fa-angle-down' : 'fas fa-angle-up'
-                        "
-                      >
-                      </b-icon>
-                    </a>
-                  </div>
-                  <div class="card-content">
-                    <div class="content">
-                      {{ work.city }}
-                      {{ work.desc }}
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a class="card-footer-item">
-                      <b-button
-                        @click="editWork(index)"
-                        icon-left="far fa-edit"
-                        size="is-small"
-                      >
-                      </b-button>
-                    </a>
-                    <a class="card-footer-item">
-                      <b-button
-                        @click="deleteWork(index)"
-                        icon-left="fas fa-trash"
-                        size="is-small"
-                      >
-                      </b-button>
-                    </a>
-                  </footer>
-                </b-collapse>
-              </section>
+                  </b-button>
+                </div>
+                <div class="column">
+                  <b-button
+                    @click="deleteWork(index)"
+                    icon-left="fas fa-trash"
+                    size="is-small"
+                    class="buttons-action"
+                  >
+                  </b-button>
+                </div>
+                <div class="column is-full">
+                  {{ work.employer }}, {{ work.city }}
+                </div>
+                <div class="column is-full">
+                  <p>
+                    {{ $moment(work.startDate).format("MMMM YYYY") }} --
+                    {{ $moment(work.endDate).format("MMMM YYYY") }}
+                  </p>
+                </div>
+                <div class="column is-full">
+                  {{ work.desc }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -217,7 +203,15 @@ export default {
 };
 </script>
 <style lang="scss">
-.card {
-  margin-bottom: 1rem;
+.card-data {
+  margin-bottom: 1.5rem !important;
+}
+.buttons-action {
+  display: none;
+}
+.card-data:hover {
+  .buttons-action {
+    display: block;
+  }
 }
 </style>
